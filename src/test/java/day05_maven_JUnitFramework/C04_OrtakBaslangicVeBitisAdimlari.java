@@ -7,39 +7,41 @@ import utilities.ReusableMethods;
 
 import java.time.Duration;
 
-public class C03_TestNotasyonu {
+public class C04_OrtakBaslangicVeBitisAdimlari {
 
     /*
-        Bir test framework'unde kullanilacak her bagimsiz mini test
-        farkli test gruplarinda (smoke, E2E testi, regression ...) calistirilabilir olmalidir
-
         Bu class'da birbirinden bagimsiz calisabilecek
         3 test yapmak istiyorum
         1- testotomasyonu.com'a gidip url'in "testotomasyonu" icerdigini test etsin
         2- wisequarter.com'a gidip url'in "wisequarter" icerdigini test etsin
         3- youtube.com'a gidip url'in "youtube" icerdigini test etsin
 
-        Bagimsiz calistirabilmek icin yaptigimiz testleri
-        bagimsiz test method'larinda hazirlamak guzel olur
-        ANCAK Java'daki klasik method'lar baska bir yerden cagrilmadikca calismaz
-        ve tek baslarina Run edilemezler
+        Class'daki 3 test method'unun hepsinin
+        en basindaki 3 satir ve en sonundaki 2 satir ayni
+        bu satirlari tekrar tekrar yazmak istemezsek
 
-        JUnit ile kazandigimiz en buyuk kolayliklardan biri
-        siradan method'lari @Test notasyonu sayesinde
-        tek basina CALISABILIR veya CALISTIRILABILIR method'lara donusturmektir.
 
-        @ Notasyonlar kucuk bilgiler iceren
-        mini kod bloklaridir
-        ve kendilerine tanimlanan gorevleri yaparlar
 
      */
+    WebDriver driver;
+
+
+    public void setup(){
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }
+
+    public void driverKapatma(){
+        ReusableMethods.bekle(1);
+        driver.quit();
+    }
+
 
     @Test
     public void testotomasyonuTesti(){
+        setup();
 
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         // 1- testotomasyonu.com'a gidip url'in "testotomasyonu" icerdigini test etsin
         driver.get("https://www.testotomasyonu.com");
 
@@ -50,16 +52,13 @@ public class C03_TestNotasyonu {
             System.out.println("Testotomasyonu Url testi PASSED");
         }else System.out.println("Testotomasyonu Url testi FAILED");
 
-        ReusableMethods.bekle(1);
-        driver.quit();
+        driverKapatma();
     }
 
     @Test
     public void wisequarterTesti(){
 
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        setup();
         // 2- wisequarter.com'a gidip url'in "wisequarter" icerdigini test etsin
         driver.get("https://www.wisequarter.com");
 
@@ -70,16 +69,13 @@ public class C03_TestNotasyonu {
             System.out.println("Wisequarter Url testi PASSED");
         }else System.out.println("Wisequarter Url testi FAILED");
 
-        ReusableMethods.bekle(1);
-        driver.quit();
+        driverKapatma();
     }
 
     @Test
     public void youtubeTesti(){
 
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        setup();
         // 3- youtube.com'a gidip url'in "youtube" icerdigini test etsin
         driver.get("https://www.youtube.com");
 
@@ -90,8 +86,7 @@ public class C03_TestNotasyonu {
             System.out.println("Youtube Url testi PASSED");
         }else System.out.println("Youtube Url testi FAILED");
 
-        ReusableMethods.bekle(1);
-        driver.quit();
+        driverKapatma();
     }
 
 
