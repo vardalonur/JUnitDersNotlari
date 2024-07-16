@@ -40,15 +40,15 @@ public class C06_BeforeAll_AfterAll {
 
     @Test
     public void test01(){
-
+        // 1- testotomasyonu anasayfaya gidin ve dogru sayfaya gittiginizi test edin
     }
     @Test
     public void test02(){
-
+        // 2- phone icin arama yapin ve arama sonucunda urun bulunabildigini test edin
     }
     @Test
     public void test03(){
-
+        // 3- ilk urunu tiklayin ve urun isminde case sensitive olmadan phone bulundugunu test edin
     }
 
 
