@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>Team144_JUnit</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.22.0</version>
+        </dependency>
+
+        <!--
+            Selenium kendi webdriver'ina sahiptir
+            dolayisiyla disardan farkli bir webdriver yuklemek ZORUNDA degiliz
+            ANCAK calistigimiz sirket bize ozel bir webdriver verirse
+            o webdriver'in dependency'sini de pom.xml'e eklemeliyiz
+
+            Biz ornek olmasi acisindan
+            selenium ile en cok kullanilan free webdriver olan
+            bonigarcia webdriver'i projemize ekleyecegiz
+            ama webdriver objemizi selenium'dan olusturmayi tercih ediyoruz
+        -->
+
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.8.0</version>
+        </dependency>
+
+
+    </dependencies>
+
+
+</project>
