@@ -1,35 +1,27 @@
-package day05_maven_JUnitFramework;
+package day06_JUnitAssertions_dropdownMenu;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.opentest4j.AssertionFailedError;
 import utilities.ReusableMethods;
 
 import java.time.Duration;
 
-public class C05_BeforeAfterNotasyonlari {
+public class C01_Assertions {
+
     /*
-        Bu class'da birbirinden bagimsiz calisabilecek
-        3 test yapmak istiyorum
-        1- testotomasyonu.com'a gidip url'in "testotomasyonu" icerdigini test etsin
-        2- wisequarter.com'a gidip url'in "wisequarter" icerdigini test etsin
-        3- youtube.com'a gidip url'in "youtube" icerdigini test etsin
+        JUnit calisan test method'larinin hangisinin failed, hangisinin passed oldugunu da gosterir
 
-        EGER setup ve driverKapatma method'larin
-        bizim cagirmamiza ihtiyac olmadan
-        OTOMATIK OLARAK her test method'undan once ve sonra calismasini istersek
-        @Before... ve @After... method'lari kullaniriz
+        JUnit bir test method'u sorun olmadan calisip
+        "Process finished with exit code 0" yaziyorsa
+        bu test method'unu PASSED olarak algilar
 
-        Bu method'lar test method'larindan once ve sonra
-        otomatik ve bagimsiz olarak calistiklarindan
-        test method'unda bir exception olussa bile
-        bu method'lar devreye girer ve gorevlerini yaparlar
 
+        Eger bir test method'u calisirken
+        herhangi bir sebeple calismasi durduruluyorsa
+        ve beklenemeyen sebeple tum kodlar calistirilamiyorsa testi FAILED olarak algilar
      */
-
 
     WebDriver driver;
 
@@ -52,23 +44,26 @@ public class C05_BeforeAfterNotasyonlari {
         // 1- testotomasyonu.com'a gidip url'in "testotomasyonu" icerdigini test etsin
         driver.get("https://www.testotomasyonu.com");
 
-        String expectedUrlIcerik = "testotomasyonu";
+        String expectedUrlIcerik = "testotomasyonuPPP";
         String actualUrl = driver.getCurrentUrl();
 
         if (actualUrl.contains(expectedUrlIcerik)){
             System.out.println("Testotomasyonu Url testi PASSED");
-        }else System.out.println("Testotomasyonu Url testi FAILED");
+        }else {
+            System.out.println("Testotomasyonu Url testi FAILED");
+            throw new AssertionFailedError();
+        }
 
     }
 
 
-    @Test @Disabled
+    @Test
     public void wisequarterTesti(){
 
         // 2- wisequarter.com'a gidip url'in "wisequarter" icerdigini test etsin
         driver.get("https://www.wisequarter.com");
 
-        String expectedUrlIcerik = "wisequarter";
+        String expectedUrlIcerik = "wisequarterPPP";
         String actualUrl = driver.getCurrentUrl();
 
         if (actualUrl.contains(expectedUrlIcerik)){
@@ -83,12 +78,10 @@ public class C05_BeforeAfterNotasyonlari {
         // 3- youtube.com'a gidip url'in "youtube" icerdigini test etsin
         driver.get("https://www.youtube.com");
 
-        String expectedUrlIcerik = "youtube";
+        String expectedUrlIcerik = "youtubePPP";
         String actualUrl = driver.getCurrentUrl();
 
-        if (actualUrl.contains(expectedUrlIcerik)){
-            System.out.println("Youtube Url testi PASSED");
-        }else System.out.println("Youtube Url testi FAILED");
+        Assertions.assertTrue(actualUrl.contains(expectedUrlIcerik),"Actual Url expected icerigi barindirmiyor");
 
     }
 }
