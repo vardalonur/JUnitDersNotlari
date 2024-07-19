@@ -37,18 +37,33 @@ public class C05_Iframe extends TestBaseEach {
         //	- Text Box’a “Merhaba Dunya!” yazin.
         // TextBox iframe icinde oldugundan
         // once iframe'i locate etmeli
-
+        WebElement iframeElementi = driver.findElement(By.id("mce_0_ifr"));
 
         // gittigimiz url'in oldugu sayfadan
         // locate ettigimiz iframe'in oldugu sayfaya gecis yapmali
-
+        driver.switchTo().frame(iframeElementi);
 
         // sonra textBox'a yazi gondermeliyiz
         WebElement textBoxElementi = driver.findElement(By.xpath("//body[@id='tinymce']"));
+        textBoxElementi.clear();
         textBoxElementi.sendKeys("Merhaba Dunya");
 
         //	- TextBox’in altinda bulunan “Elemental Selenium” linkinin gorunur oldugunu dogrulayin
+        /*
+            Giris yaptigimiz bir iframe'den disari cikmak icin 2 alternatifimiz var
+            1- driver.switchTo().parentFrame();
+            eger ic ice birden fazla katman varsa bir ust katmana cikarir
+            2- driver.switchTo().defaultContent();
+            kac katmanli olursa olsun, en ustteki ansayfaya gecis yapar
+         */
+        //driver.switchTo().parentFrame();
+        driver.switchTo().defaultContent();
+
+
+        WebElement elementalSeleniumElementi = driver.findElement(By.xpath("//*[@*='large-4 large-centered columns']"));
+        Assertions.assertTrue(elementalSeleniumElementi.isDisplayed());
         //  	ve  yazisini konsolda yazdirin.
+        System.out.println(elementalSeleniumElementi.getText());
 
         ReusableMethods.bekle(3);
 
