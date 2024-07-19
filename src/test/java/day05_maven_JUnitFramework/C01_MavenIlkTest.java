@@ -39,6 +39,7 @@ public class C01_MavenIlkTest {
         // sayfayi kapatin
         ReusableMethods.bekle(3);
         driver.quit();
+        ReusableMethods.bekle(3);
 
     }
 }
