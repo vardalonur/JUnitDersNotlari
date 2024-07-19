@@ -51,5 +51,7 @@ public class C04_BasicAuthentication extends TestBaseEach {
         Assertions.assertTrue(actualYazi.contains(expectedyaziIcerigi));
 
         ReusableMethods.bekle(1);
+
+
     }
 }
