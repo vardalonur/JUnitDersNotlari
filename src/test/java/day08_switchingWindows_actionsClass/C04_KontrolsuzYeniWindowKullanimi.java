@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import utilities.ReusableMethods;
 import utilities.TestBaseEach;
 
+import java.util.List;
 import java.util.Set;
 
 public class C04_KontrolsuzYeniWindowKullanimi extends TestBaseEach {
@@ -68,12 +69,20 @@ public class C04_KontrolsuzYeniWindowKullanimi extends TestBaseEach {
         Assertions.assertEquals(expectedUrl,actualUrl);
 
         //● Bulunan urun sayisinin 16 olduğunu test edin
+        List<WebElement> bulunanUrunElementleriList = driver.findElements(By.xpath("//*[@*='prod-img']"));
 
+        Assertions.assertEquals(16, bulunanUrunElementleriList.size());
 
         //● Ilk actiginiz addremove sayfasinin oldugu window’a donun
 
+        driver.switchTo().window(ilkWindowWHD);
 
         //● Url’in addremove icerdigini test edin
+
+        String expectedUrlIcerik = "addremove";
+        actualUrl = driver.getCurrentUrl();
+
+        Assertions.assertTrue(actualUrl.contains(expectedUrlIcerik));
 
         ReusableMethods.bekle(3);
 
