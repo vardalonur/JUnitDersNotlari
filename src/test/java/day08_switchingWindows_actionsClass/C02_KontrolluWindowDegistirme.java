@@ -18,7 +18,7 @@ public class C02_KontrolluWindowDegistirme extends TestBaseEach {
         driver.get("https://www.testotomasyonu.com");
 
         System.out.println("Anasayfa : "+ driver.getCurrentUrl()); // https://www.testotomasyonu.com/
-        System.out.println("Anasayfa : "+ driver.getWindowHandle()); // B3EAA570CB2910434B41A8E608AF22F2
+        System.out.println("Anasayfa : "+ driver.getWindowHandle()); // E973F56AD9B39E93BA52C94015078FD3
         String ilkWindowWhd = driver.getWindowHandle();
         ReusableMethods.bekle(3);
 
@@ -49,9 +49,9 @@ public class C02_KontrolluWindowDegistirme extends TestBaseEach {
         System.out.println("Electronics linkine basinca : "+ driver.getCurrentUrl());
         // Yeni Tab acildiginda : about:blank
         System.out.println("Electronics linkine basinca : "+ driver.getWindowHandle());
-        // 83E84E3762FDEB38AF2F6DB152CD78AF
+        // 505A0A6FB5C455F550FFC02204E9EA54
         System.out.println("Electronics linkine basinca tum WHD'leri : "+ driver.getWindowHandles());
-        // 83E84E3762FDEB38AF2F6DB152CD78AF
+        // [E973F56AD9B39E93BA52C94015078FD3, 505A0A6FB5C455F550FFC02204E9EA54]
         String ikinciWindowWhd = driver.getWindowHandle();
 
         ReusableMethods.bekle(3);
@@ -63,18 +63,18 @@ public class C02_KontrolluWindowDegistirme extends TestBaseEach {
         System.out.println("3.window acildiginda : "+ driver.getCurrentUrl());
         // Yeni Tab acildiginda : about:blank
         System.out.println("3.window acildiginda  : "+ driver.getWindowHandle());
-        // 83E84E3762FDEB38AF2F6DB152CD78AF
+        // 505A0A6FB5C455F550FFC02204E9EA54
         System.out.println("3.window acildiginda  tum WHD'leri : "+ driver.getWindowHandles());
-        // 83E84E3762FDEB38AF2F6DB152CD78AF
+        // [E973F56AD9B39E93BA52C94015078FD3, 505A0A6FB5C455F550FFC02204E9EA54]
 
         driver.get("https://www.wisequarter.com");
 
         String ucuncuWindowWhd = driver.getWindowHandle();
 
         System.out.println("=============================");
-        System.out.println("Birinci window icin WHD : "  + ilkWindowWhd);
-        System.out.println("Ikinci window icin WHD : "  + ikinciWindowWhd);
-        System.out.println("Ucuncu window icin WHD : "  + ucuncuWindowWhd);
+        System.out.println("Birinci window icin WHD : "  + ilkWindowWhd); //E973F56AD9B39E93BA52C94015078FD3
+        System.out.println("Ikinci window icin WHD : "  + ikinciWindowWhd); //505A0A6FB5C455F550FFC02204E9EA54
+        System.out.println("Ucuncu window icin WHD : "  + ucuncuWindowWhd); //1C8FA957C98D53C87622D64CD5BAA568
 
 
         // testotomasyonu anasayfanin acik oldugu window'a donun ve
