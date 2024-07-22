@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import utilities.ReusableMethods;
 import utilities.TestBaseEach;
 
+import java.util.Set;
+
 public class C03_KontrolsuzYeniWindowAcilmasi extends TestBaseEach {
 
     @Test
@@ -56,6 +58,54 @@ public class C03_KontrolsuzYeniWindowAcilmasi extends TestBaseEach {
         // kategory olarak Electronics sayfasinin acildigini test edin
         // Home/Electronics yazisinin gorundugunu test edin
 
+
+
+
+
+        /*
+            Kontrolsuz bir window acildiginda
+            driver yeni window'a ve yeni sayfa'ya gecemez
+            eski window ve eski url'de bekler
+
+            biz yeni acilan windowda, acilan url'deki bir web elementi kullanmak istedigimizde
+            o web elementi bulamaz ve testimiz failed olur
+
+            Kontrolsuz acilan 2.window'a gecis yapabilmek icin
+            2.window'un window handle degerini bulmamiz gerekir
+
+            driver.getWindowHandle() icinde oldugu window'un WHD'ini verir
+            driver yeni window'a gecmeden driver'i kullanarak WHD'ini alamayiz
+            WHD olmadan da driver'i yeni window'a geciremeyiz.
+
+            Bu durumda bizim driver'a henuz gecmedigi window'un WHD'ini bulmamiz lazim
+
+            Burada JAVA devreye girer
+
+            1- ilk window acildiginda birinciWindowWHD'ini kaydederiz
+            2- kontrolumuz disinda bir window acildiginda
+               driver.getWindowHandles() ile acilmis olan 2 window'un
+               WindowHandleDegerlerini kaydederiz
+            3- Bir for-each loop ile Set'deki 2 WHD'ini ele alip
+               kaydettigimiz birinciWindowWHD'ine esit olmayan String'i
+               ikinciWindowWHD olarak atariz
+            4- java ile buldugumuz ikinciWindowWHD'ini kullanarak
+               driver'i ikinci window'a gecirebiliriz
+
+         */
+
+        Set<String> acikTumWindowlarinWHDleri = driver.getWindowHandles();
+        String ikinciWindowWHD = "";
+
+        for (String eachWhd : acikTumWindowlarinWHDleri
+             ) {
+
+            if (   ! eachWhd.equals(ilkWindowWhd) ){
+                ikinciWindowWHD = eachWhd;
+            }
+        }
+
+        driver.switchTo().window(ikinciWindowWHD); // driver ikinci window'a gecis yapti
+
         WebElement seciliKategoryElementi = driver.findElement(By.xpath("//li[@class='current']"));
 
         String expectedSeciliKategori = "Electronics";
@@ -66,6 +116,5 @@ public class C03_KontrolsuzYeniWindowAcilmasi extends TestBaseEach {
 
 
         ReusableMethods.bekle(3);
-
     }
 }
