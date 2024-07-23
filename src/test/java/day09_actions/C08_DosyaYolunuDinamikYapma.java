@@ -44,7 +44,7 @@ public class C08_DosyaYolunuDinamikYapma {
         // Projemizde day09 package'inda sample.png dosyasi bulundugunu test edin
 
         // String dosyaYolu2 = "src/test/java/day09_actions/sample.png";
-        String dosyaYolu2 = System.getProperty("user.dir") + "src/test/java/day09_actions/sample.png";
+        String dosyaYolu2 = System.getProperty("user.dir") + "/src/test/java/day09_actions/sample.png";
 
         Assertions.assertTrue( Files.exists(Paths.get(dosyaYolu2)));
 
