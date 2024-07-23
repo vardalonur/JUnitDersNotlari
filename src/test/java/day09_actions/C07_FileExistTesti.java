@@ -27,7 +27,7 @@ public class C07_FileExistTesti {
 
         // Downloads klasorunde sample.png dosyasi bulundugunu test edin
 
-        String dosyaYolu = "/Users/ahmetbulutluoz/Downloads/sample.png";
+        String dosyaYolu = "/Users/vardal/Downloads/sample.png";
 
         Assertions.assertTrue(Files.exists(Paths.get(dosyaYolu)));
 

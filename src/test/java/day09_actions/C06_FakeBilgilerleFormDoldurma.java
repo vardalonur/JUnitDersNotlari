@@ -48,6 +48,10 @@ public class C06_FakeBilgilerleFormDoldurma extends TestBaseEach {
                 .sendKeys(fakeSifre).perform();
 
         // signup butonuna basalim
+        // buton görünmüyorsa öncesinde "PAGE_DOWN" eklenebilir, Page Down animasyonu sırasında geçen süre için
+        // bekleme atanabilir.
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.bekle(1);
         driver.findElement(By.id("btn-submit-form"))
                 .click();
 
@@ -69,6 +73,7 @@ public class C06_FakeBilgilerleFormDoldurma extends TestBaseEach {
 
         Assertions.assertTrue(logoutButonu.isDisplayed());
 
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
         logoutButonu.click();
 
         ReusableMethods.bekle(2);
