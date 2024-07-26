@@ -67,8 +67,16 @@ public class C03_KlasikOlmayanWebTablolari extends TestBaseEach {
 
         //  9. Tabloda " Category" si Men Fashion olan urunun fiyatini yazdirin
 
+        for (int i = 1; i <= satirElementleriList.size() ; i++) {
+            //i.satirdaki kategori bilgisini alalim
+            String satirdakiCategori=getCellData(i,2);
 
+            if (satirdakiCategori.equalsIgnoreCase("Men Fashion")){
+                System.out.println("istenen fiyat : " + getCellData(i,3));
+            }
+            // istenen fiyat : $15.00
 
+        }
 
         //10. Bir method olusturun, Test method'undan satir ve sutun verildiginde datayi dondursun
 
