@@ -100,6 +100,20 @@ public class C02_KlasikHtmlTable extends TestBaseEach {
         // expected fiyat ile test ederim
 
         String expectedFiyat = "$99.00";
+        String actualFiyat = "";
+
+        for (int i = 1; i <=satirElementleriList.size() ; i++) {
+
+            // i. satirdaki category bilgisini alalim
+            String satirdakiCategory = getCellData(i,2);
+
+            if (satirdakiCategory.equalsIgnoreCase("travel")){
+                actualFiyat = getCellData(i,3);
+            }
+
+        }
+
+        Assertions.assertEquals(expectedFiyat,actualFiyat);
 
 
     }
