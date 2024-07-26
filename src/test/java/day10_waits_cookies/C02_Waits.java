@@ -70,9 +70,9 @@ public class C02_Waits {
         driver.get("https://the-internet.herokuapp.com/dynamic_controls");
 
         //2. Textbox’in etkin olmadigini(enabled) dogrulayın
-        WebElement texBox = driver.findElement(By.xpath("//input[@type='text']"));
+        WebElement textBox = driver.findElement(By.xpath("//input[@type='text']"));
 
-        Assertions.assertFalse(texBox.isEnabled());
+        Assertions.assertFalse(textBox.isEnabled());
 
         //3. Enable butonuna tıklayın
         driver.findElement(By.xpath("//button[text()='Enable']"))
@@ -87,10 +87,10 @@ public class C02_Waits {
             //        bizim kullanacagimiz textBox zaten locate edildi
 
             // 3.adim wait objesi ile baslayip, beklenecek kosulu tanimlayin
-        wait.until(ExpectedConditions.elementToBeClickable(texBox));
+        wait.until(ExpectedConditions.elementToBeClickable(textBox));
 
             // artik texBox'in enable oldugunu test edebiliriz
-        Assertions.assertTrue(texBox.isEnabled());
+        Assertions.assertTrue(textBox.isEnabled());
 
         //5. “It’s enabled!” mesajinin goruntulendigini dogrulayın.
         WebElement itsEnabledYaziElementi = driver.findElement(By.xpath("//*[text()=\"It's enabled!\"]"));
