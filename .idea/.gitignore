@@ -1,3 +1,5 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+src/test/java/day10_waits_cookies/practice.java
+target/test-classes/day10_waits_cookies/practice.class
