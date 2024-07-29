@@ -1,8 +1,13 @@
 package utilities;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -62,6 +67,24 @@ public class ReusableMethods {
             if (gecilenSayfaTitle.equals(hedefTitle)){
                 break;
             }
+        }
+    }
+
+    public static void getFullScreenshot(WebDriver driver){
+        // 1.adim screenshot objesi olusturmak ve deger olarak driver'imizi atamak
+        TakesScreenshot tss = (TakesScreenshot) driver;
+
+        // 2.adim screenshot'i kaydedecegimiz File'i olusturun
+        File tumSayfaSS = new File("target/ekranGoruntuleri/tumSayfaSS.png");
+
+        // 3.adim screenshot'i alip gecici bir dosyaya kopyalayalim
+        File geciciDosya = tss.getScreenshotAs(OutputType.FILE);
+
+        // 4.adim gecici dosyayi, asil kaydetmek istedigimiz dosyaya kopyalayalim
+        try {
+            FileUtils.copyFile(geciciDosya,tumSayfaSS);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
