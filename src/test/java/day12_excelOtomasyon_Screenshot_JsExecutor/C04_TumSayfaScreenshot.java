@@ -23,5 +23,9 @@ public class C04_TumSayfaScreenshot extends TestBaseEach {
         // ekran goruntusu alin
 
         ReusableMethods.getFullScreenshot(driver,"Online banking");
+
+        // tekrar ekran goruntusu alin
+
+        ReusableMethods.getFullScreenshot(driver);
     }
 }

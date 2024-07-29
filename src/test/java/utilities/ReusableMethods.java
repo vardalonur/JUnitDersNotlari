@@ -102,7 +102,7 @@ public class ReusableMethods {
         TakesScreenshot tss = (TakesScreenshot) driver;
 
         // 2.adim screenshot'i kaydedecegimiz File'i olusturun
-        File tumSayfaSS = new File("target/ekranGoruntuleri/TumSayfaSS"+tarihEtiketi+".png");
+        File tumSayfaSS = new File("target/ekranGoruntuleri/TumSayfaSS_"+tarihEtiketi+".png");
 
         // 3.adim screenshot'i alip gecici bir dosyaya kopyalayalim
         File geciciDosya = tss.getScreenshotAs(OutputType.FILE);
