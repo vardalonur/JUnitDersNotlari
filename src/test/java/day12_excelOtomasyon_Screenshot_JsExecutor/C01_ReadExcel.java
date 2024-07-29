@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class C01_ReadExcel {
 
@@ -89,10 +91,59 @@ public class C01_ReadExcel {
 
         //      - Turkce baskent isimlerinde Ankara bulundugunu test edin
 
+        // bu soruyu iki turlu cozebiliriz
+        // 1- for loop ve flag kullanalim
+
+        boolean ankaraVarMi = false;
+
+        for (int i = 1; i <= sayfa1.getLastRowNum() ; i++) {
+
+           satirdakiTurkceBaskentIsmi = sayfa1.getRow(i).getCell(3).toString();
+
+           if (satirdakiTurkceBaskentIsmi.equalsIgnoreCase("Ankara")){
+               ankaraVarMi = true;
+               break;
+           }
+
+        }
+
+        Assertions.assertTrue(ankaraVarMi);
 
 
+        // 2.yol ingilizce ulke ismini Key, turkce baskent ismini value olarak secip
+        //       tum ulkelerin bu iki bilgisini bir map'e ekleyelim
+
+        Map<String,String > ulkelerMap = new TreeMap<>();
+
+        for (int i = 1; i <=sayfa1.getLastRowNum() ; i++) {
+
+            String satirdakiIngilizceUlkeIsmi = sayfa1.getRow(i).getCell(0).toString();
+            satirdakiTurkceBaskentIsmi = sayfa1.getRow(i).getCell(3).toString();
+
+            ulkelerMap.put(satirdakiIngilizceUlkeIsmi,satirdakiTurkceBaskentIsmi);
+
+        }
+
+        System.out.println(ulkelerMap);
+
+        // ulkeler map'inde baskent olarak Ankara bulundugunu test edin
+
+        Assertions.assertTrue(ulkelerMap.containsValue("Ankara"));
+
+        // ulkeler map'inde baskent olarak Berlin bulundugunu test edin
+
+        Assertions.assertTrue(ulkelerMap.containsValue("Berlin"));
+
+        // ulkeler map'inde ulke olarak Nepal bulundugunu test edin
+
+        Assertions.assertTrue(ulkelerMap.containsKey("Nepal"));
 
 
+        // 195.satirin, 1.hucresini yazdirin
+        // System.out.println(sayfa1.getRow(194).getCell(0)); // NullPointerException
+
+        // 3.satirdaki 10.hucreyi yazdirin
+        System.out.println(sayfa1.getRow(10).getCell(9)); // null
 
     }
 }
